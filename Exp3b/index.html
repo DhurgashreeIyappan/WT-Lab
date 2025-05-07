@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e6f7e6;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .college-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .college-header img {
+            width: 60px; 
+            height: auto;
+        }
+        .college-name {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .college-address {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .photo {
+            width: 120px;
+            height: 140px;
+            border: 2px solid #000;
+            display: block;
+            margin: 10px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        td {
+            padding: 8px;
+            border: none;
+        }
+        .label {
+            font-weight: bold;
+            width: 200px;
+        }
+        .input-box {
+            border: none;
+            border-bottom: 1px solid black;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+            padding: 5px 0;
+        }
+        .study-period {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+        .study-period input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid black;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="college-header">
+            <img src="logo.png" alt="College Logo"> 
+            <div class="college-name">KONGU ENGINEERING COLLEGE<br>(Autonomous)</div>
+            <img src="logo.png" alt="College Logo"> 
+        </div>
+        <div class="college-address">THOPPUPALAYAM (Po), PERUNDURAI (Tk),<br>ERODE - 638 060, TAMILNADU, INDIA</div>
+        <h2 style="text-align: center;">STUDENT RECORD</h2>
+        <img src="profile.jpg" alt="Student Photo" class="photo">
+        
+        <table>
+            <tr>
+                <td class="label">NAME:</td>
+                <td>
+                    <input type="text" class="input-box" id="name" placeholder="Enter name">
+                    <div class="error" id="name-error">Name is required.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">REG No.:</td>
+                <td>
+                    <input type="text" class="input-box" id="regno" placeholder="Enter reg no.">
+                    <div class="error" id="regno-error">Invalid registration number format.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">PROGRAMME, BRANCH & SECTION:</td>
+                <td>
+                    <input type="text" class="input-box" id="programme">
+                    <div class="error" id="programme-error">This field is required.</div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" class="input-box" id="section">
+                    <div class="error" id="section-error">This field is required.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">PERIOD OF STUDY:</td>
+                <td>
+                    <div class="study-period">
+                        <span>From</span> <input type="text" class="input-box small-box" id="from-year">
+                        <span>To</span> <input type="text" class="input-box small-box" id="to-year">
+                    </div>
+                    <div class="error" id="year-error">Invalid study period.</div>
+                </td>
+            </tr>            
+        </table>
+
+        <div class="d-flex justify-content-between mt-3">
+            <button type="button" onclick="validateForm()" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            let name = document.getElementById("name").value;
+            let regno = document.getElementById("regno").value;
+            let programme = document.getElementById("programme").value;
+            let section = document.getElementById("section").value;
+            let fromYear = document.getElementById("from-year").value;
+            let toYear = document.getElementById("to-year").value;
+
+
+            if (name === "") {
+                document.getElementById("name-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (regno==="") {
+                document.getElementById("regno-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (programme === "") {
+                document.getElementById("programme-error").style.display = "block";
+                isValid = false;
+            }
+            if (section === "") {
+                document.getElementById("section-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (fromYear === "" || toYear === "") {
+                document.getElementById("year-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (isValid) {
+                window.location.href = "page2.html";
+            }
+        }
+    </script>
+</body>
+</html>

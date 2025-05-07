@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Royal Lace Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: url('Royal Lace Boutique .png') no-repeat center center/cover;
+            background-size: cover; 
+            color: #FAF3E0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-custom {
+            background-color: rgba(183, 110, 121, 0.7); /* Semi-transparent background */
+            padding-top: 40px;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #FAF3E0 !important;
+            font-weight: bold;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #E8B4B8 !important;
+        }
+
+        .navbar-brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .nav-item {
+            font-size: 18px;
+        }
+
+        /* Landing Section */
+        .landing {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .landing .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .landing h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .landing p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-shop {
+            background-color: #B76E79;
+            color: white;
+            font-size: 20px;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-shop:hover {
+            background-color: #E8B4B8;
+            color: black;
+        }
+        .footer-custom {
+            background-color: rgba(183, 110, 121, 0.7); 
+            color: #FAF3E0;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .footer-custom a {
+            color: #FAF3E0;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-custom a:hover {
+            color: #E8B4B8;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <span class="navbar-brand">Royal Lace Boutique</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="landing">
+    <div class="overlay"></div>
+    <div class="landing-content">
+        <h1>Experience Elegance at <br>Royal Lace Boutique</h1>
+        <p>Discover timeless grace, exquisite craftsmanship, and fashion that defines sophistication.</p>
+        <p>Have a look at our products and do contact us to craft based on your customization.</p>
+        <a href="shop.html" class="btn-shop">Shop Now</a>
+    </div>
+</section>
+
+<footer class="footer-custom">
+    <p>&copy; 2025 Royal Lace Boutique. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

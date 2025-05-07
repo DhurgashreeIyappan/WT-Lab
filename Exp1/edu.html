@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      #img12 img{
+        max-width: 40%;
+      }
+      #img11 img{
+        max-width: 30%;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="name">DHURGASHREE I</h1>
+        <img class="img" src="photo.jpeg" alt="Profile Photo">
+    </div>
+
+    <nav class="contents">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About me</a></li>
+            <li><a href="edu.html">Educational Qualifications</a></li>
+            <li><a href="projects.html">Projects and Presentations</a></li>
+            <li><a href="skillset.html">Skill sets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="reference.html">Reference</a></li>
+        </ul>
+    </nav>
+
+    <div class="edutab">
+
+        <table border="2">
+            <caption><h3><u>Educational Qualifications</u></h3></caption>
+            <tr>
+                <th>Qualification</th>
+                <th>Institution</th>
+                <th>Year of Completion</th>
+                <th>Percentage/CGPA</th>
+                <th>Certificates</th>
+            </tr>
+            <tr>
+                <td>High School</td>
+                <td>Unique Public School, Ooty</td>
+                <td>2021</td>
+                <td>-</td>
+                <td><a href="#img10">View</a></td>
+            </tr>
+            <tr>
+                <td>Senior Secondary I</td>
+                <td>Unique Publich School, Ooty</td>
+                <td>2022</td>
+                <td>90%</td>
+                <td><a href="#img11">View</a></td>
+            </tr>
+            <tr>
+                <td>Senior Secondary II</td>
+                <td>Unique Publich School, Ooty</td>
+                <td>2023</td>
+                <td>92%</td>
+                <td><a href="#img12">View</a></td>
+            </tr>
+            <tr>
+                <td>B.Tech Information Technology</td>
+                <td>Kongu Engineering College , Perundurai</td>
+                <td>Present</td>
+                <td>8.80 CGPA</td>
+                <td><a href="#imgBtech">View</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="img10" class="modal">
+        <img src="10th Marksheet.png" alt="10th Certificate">
+        <a href="#" class="close">Close</a>
+    </div>
+    <div id="img11" class="modal">
+        <img src="11th Marksheet.png" alt="11th Certificate">
+        <a href="#" class="close">Close</a>
+    </div>
+    <div id="img12" class="modal">
+        <img src="12th Marksheet.png" alt="12th Certificate">
+        <a href="#" class="close">Close</a>
+    </div>
+    <div id="imgBtech" class="modal">
+        <img src="cgpa.jpg" alt="B.Tech Certificate">
+        <a href="#" class="close">Close</a>
+    </div>
+
+    <footer class="footer">
+        <p class="mb-0">&copy; 2025 Dhurgashree's Blog. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

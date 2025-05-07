@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .checkout{
+            padding-bottom: 20px;
+        }
+        .checkout-container {
+            max-width: 600px;
+            margin: auto;
+            background: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #B76E79;
+        }
+        .btn-checkout {
+            background-color: #D48BA8;
+            color: white;
+            font-size: 18px;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .btn-checkout:hover {
+            background-color: #B76E79;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 checkout" >
+    <div class="checkout-container">
+        <h2 class="text-center mb-4">Checkout</h2>
+        
+        <form id="registrationForm" novalidate> <!--To show deault form class validation remove novalidate-->
+            <div class="mb-3">
+                <label class="form-label" >Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                <span class="error" id="nameerror"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" >Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <span class="error" id="emailerror"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="phone" class="form-control"  id="phone" placeholder="Enter your mobile number" required>
+                <span class="error" id="phoneError"></span>
+            </div>
+
+            <h5>Shipping Address</h5>
+            <div class="mb-3">
+                <label class="form-label" >Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter your address" required>
+                <span class="error" id="addresserror"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" >City</label>
+                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                    <span class="error" id="cityerror"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" >Pin Code</label>
+                    <input type="text" class="form-control" id="pincode" placeholder="Zip Code" required>
+                    <span class="error" id="pincodeerror"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Payment Method</label>
+                <select class="form-control" id="paymentMethod">
+                    <option value="">Select</option>
+                    <option value="upi">UPI</option>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="bank">Bank Transfer</option>
+                </select>
+                <span class="error" id="paymentError"></span>
+            </div>            
+            <button type="submit" class="btn btn-checkout mt-3">Place Order</button>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    let isValid = true;
+
+    let name = document.getElementById("name").value.trim();
+    if (name === "") {
+        document.getElementById("nameerror").innerText = "Full Name is required!";
+        isValid = false;
+    } else {
+        document.getElementById("nameerror").innerText = "";
+    }
+
+    let email = document.getElementById("email").value.trim();
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+        document.getElementById("emailerror").innerText = "Email is required!";
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        document.getElementById("emailerror").innerText = "Enter a valid email!";
+        isValid = false;
+    } else {
+        document.getElementById("emailerror").innerText = "";
+    }
+
+    let phone = document.getElementById("phone").value.trim();
+    let phonePattern = /^[0-9]{10}$/;
+    if (phone === "") {
+        document.getElementById("phoneError").innerText = "Phone number is required!";
+        isValid = false;
+    } else if (!phonePattern.test(phone)) {
+        document.getElementById("phoneError").innerText = "Enter a valid 10-digit phone number!";
+        isValid = false;
+    } else {
+        document.getElementById("phoneError").innerText = "";
+    }
+
+    let address = document.getElementById("address").value.trim();
+    if (address.length < 20) {
+        document.getElementById("addresserror").innerText = "Please provide full address!";
+        isValid = false;
+    } else {
+        document.getElementById("addresserror").innerText = "";
+    }
+
+    let city = document.getElementById("city").value.trim();
+    if (city === "") {
+        document.getElementById("cityerror").innerText = "City is required!";
+        isValid = false;
+    } else {
+        document.getElementById("cityerror").innerText = "";
+    }
+
+    let pincode = document.getElementById("pincode").value.trim();
+    let pincodePattern = /^[0-9]{6}$/; 
+    if (pincode === "") {
+        document.getElementById("pincodeerror").innerText = "Pin Code is required!";
+        isValid = false;
+    } else if (!pincodePattern.test(pincode)) {
+        document.getElementById("pincodeerror").innerText = "Enter a valid 6-digit Pin Code!";
+        isValid = false;
+    } else {
+        document.getElementById("pincodeerror").innerText = "";
+    }
+    
+    let paymentMethod = document.getElementById("paymentMethod").value;
+    if (paymentMethod === "") {
+        document.getElementById("paymentError").innerText = "Please select a valid payment method!";
+        isValid = false;
+    } else {
+        document.getElementById("paymentError").innerText = "";
+    }
+
+    if (isValid) {
+        alert("Registration Successful!");
+        document.getElementById("registrationForm").reset(); 
+    }
+   
+});
+
+</script>
+</body>
+</html>

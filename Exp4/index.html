@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BILL CALCULATOR</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .demo {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #ff758c;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #ff2e63;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 46, 99, 0.5);
+        }
+
+        button {
+            background-color: #ff2e63;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff758c;
+        }
+
+        .item {
+            display: block;
+            width: 80%;
+            padding: 8px;
+            margin: 5px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        h3 {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #ff2e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <p><strong>Enter number of items:</strong></p>
+        <input type="number" id="num" placeholder="Enter number of values" onchange="generateField()">
+        <br><br>
+        <div id="itemsContainer"></div>
+        <button onclick="calculateTotal()">Calculate Total</button>
+        <button onclick="removeLastItem()">Remove Last Item</button>
+        <h3>Total Bill: <span id="totalBill">0</span></h3>
+    </div>
+
+    <script>
+        function generateField() {
+            let n = document.getElementById("num").value;
+            let fields = document.getElementById("itemsContainer");
+            fields.innerHTML = ""; 
+            
+            if (n > 0) {
+                for (let i = 1; i <= n; i++) {
+                    let input = document.createElement("input");
+                    input.type = "number";
+                    input.placeholder = "Enter value";
+                    input.classList.add("item");
+                    
+                    fields.appendChild(input);
+                }
+            }
+        }
+
+        function calculateTotal() {
+            let inputs = document.querySelectorAll(".item");
+            let total = 0;
+            
+            inputs.forEach(input => {
+                total += parseFloat(input.value) || 0; 
+            });
+
+            document.getElementById("totalBill").innerText = total;
+        }
+
+        function removeLastItem() {
+            let fields = document.getElementById("itemsContainer");
+            let items = fields.getElementsByClassName("item");
+            
+            if (items.length > 0) {
+                fields.removeChild(items[items.length - 1]); 
+            }
+        }
+    </script>
+</body>
+</html>

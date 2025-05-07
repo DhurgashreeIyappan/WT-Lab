@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Details Form</title>
+</head>
+<body>
+    <h2>Placement Details Form:</h2>
+    <form name="userForm" id="userForm" method="post">
+        <label>Roll No:</label> <input type="text" name="roll_no" required><br>
+        <label>Name:</label> <input type="text" name="name" required><br>
+        <label>Email ID:</label> <input type="email" name="email" required><br>
+        <label>Personal Mail ID:</label> <input type="email" name="personal_mail"><br>
+        <label>Temporary Address:</label> <input type="text" name="temp_address"><br>
+        <label>Permanent Address:</label> <input type="text" name="perm_address"><br>
+        <label>Mobile No:</label> <input type="text" name="mobile_no" required><br>
+        <label>WhatsApp No:</label> <input type="text" name="whatsapp_no"><br>
+        <label>Parent Name:</label> <input type="text" name="parent_name"><br>
+        <label>Parent Mobile No:</label> <input type="text" name="parent_mobile"><br>
+        <label>SSLC Mark (%):</label> <input type="text" name="sslc_mark"><br>
+        <label>SSLC Board:</label> 
+        <select name="sslc_board">
+            <option value="State Board">State Board</option>
+            <option value="CBSE">CBSE</option>
+        </select><br>
+        <label>HSC Mark (%):</label> <input type="text" name="hsc_mark"><br>
+        <label>HSC Board:</label> 
+        <select name="hsc_board">
+            <option value="State Board">State Board</option>
+            <option value="CBSE">CBSE</option>
+        </select><br>
+        <label>Diploma Mark:</label> <input type="text" name="diploma_mark"><br>
+        <label>Semester-I GPA:</label> <input type="text" name="sem1_gpa"><br>
+        <label>Semester-I CGPA:</label> <input type="text" name="sem1_cgpa"><br>
+        <label>Semester-II GPA:</label> <input type="text" name="sem2_gpa"><br>
+        <label>Semester-II CGPA:</label> <input type="text" name="sem2_cgpa"><br>
+        <label>Semester-III GPA:</label> <input type="text" name="sem3_gpa"><br>
+        <label>Semester-III CGPA:</label> <input type="text" name="sem3_cgpa"><br>
+        <label>History of Arrears:</label> <input type="text" name="history_arrears"><br>
+        <label>Standing Arrears:</label> <input type="text" name="standing_arrears"><br>
+        <label>No. of Projects Done:</label> <input type="text" name="projects_done"><br>
+        <label>GitHub Link:</label> <input type="url" name="github"><br>
+        <label>Leetcode ID:</label> <input type="text" name="leetcode_id"><br>
+        <label>Leetcode Dashboard Link:</label> <input type="url" name="leetcode_dashboard"><br>
+        <label>No. of Problems Solved in Leetcode:</label> <input type="text" name="leetcode_solved"><br>
+        <label>No. of Problems Solved in Other Platforms:</label> <input type="text" name="other_platforms_solved"><br>
+        <label>No. of Global Certifications Done:</label> <input type="text" name="certifications"><br>
+        <label>No. of Internships Done:</label> <input type="text" name="internships"><br>
+        <label>Languages Known (other than English & Tamil):</label> <input type="text" name="languages"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let form = document.forms["userForm"];
+            let rollNo = form["roll_no"].value.trim();
+            let name = form["name"].value.trim();
+            let cemail = form["email"].value.trim();
+            let email = form["personal_mail"].value.trim();
+            let mobile = form["mobile_no"].value.trim();
+            let github = form["github"].value.trim();
+            let leetcodeDashboard = form["leetcode_dashboard"].value.trim();
+
+            let cemailPattern = /^[a-zA-Z0-9._%+-]+@kongu\.edu$/;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let mobilePattern = /^[0-9]{10}$/;
+            let rollNoPattern = /^\d{2}[A-Za-z]{3}\d{3}$/;
+            let urlPattern = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-z]{2,}.*$/;
+
+            if (!rollNo || !name || !cemail || !mobile) {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+
+            if (!emailPattern.test(email) && email !== "") {
+                alert("Enter a valid personal email.");
+                return false;
+            }
+
+            if (!cemailPattern.test(cemail)) {
+                alert("Use a valid kongu.edu email.");
+                return false;
+            }
+
+            if (!rollNoPattern.test(rollNo)) {
+                alert("Enter a valid Roll No (e.g., 23ITR038).");
+                return false;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                alert("Enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+            if (github && !urlPattern.test(github)) {
+                alert("Enter a valid GitHub URL.");
+                return false;
+            }
+
+            if (leetcodeDashboard && !urlPattern.test(leetcodeDashboard)) {
+                alert("Enter a valid LeetCode Dashboard URL.");
+                return false;
+            }
+
+            return true;
+        }
+
+        document.getElementById("userForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            if (!validateForm()) return;
+
+            let formData = new FormData(this);
+            let userData = {};
+            formData.forEach((value, key) => userData[key] = value);
+
+            try {
+                let response = await fetch("http://localhost:5000/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(userData)
+                });
+
+                let result = await response.json();
+                alert("Form submitted successfully");
+                if (response.ok) window.location.href = "index.html";
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error submitting form.");
+            }
+        });
+    </script>
+</body>
+</html>

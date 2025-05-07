@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmacist Dashboard - MediLink</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href="#">MediLink Pharmacist</a>
+      <a class="btn btn-light" href="login.html">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <h2 class="text-success">Welcome, Pharmacist</h2>
+    <p class="lead">Manage your inventory and fulfill prescriptions here.</p>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">Medicine Inventory</h5>
+            <p class="card-text">Add or update stock and expiry details.</p>
+            <a href="inventory.html" class="btn btn-success">Inventory</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">Orders</h5>
+            <p class="card-text">Process new prescription orders from customers.</p>
+            <a href="pharmacist-orders.html" class="btn btn-success">View Orders</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">Upload Prescriptions</h5>
+            <p class="card-text">View and verify uploaded prescriptions.</p>
+            <a href="view-prescriptions.html" class="btn btn-success">Prescriptions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

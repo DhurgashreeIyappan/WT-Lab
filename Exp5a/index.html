@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+        }
+        .login-container {
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .message { 
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Form</h2>
+
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="Enter Username">
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button type="button" onclick="checkLogin()">Submit</button>
+        <div class="message" id="message"></div>
+    </div>
+    
+    <script>
+        function checkLogin() {
+            const n = "Dhurgashree";
+            const p = "161005";
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("message");
+
+            if (username === n && password === p) {
+                message.innerHTML = "Login successful";
+            } else {
+                fetch('/error') 
+                .then(response => response.text())
+                .then(errorMessage => {
+                    message.innerHTML = errorMessage;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

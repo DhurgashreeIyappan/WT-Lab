@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        .bio-data {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e6f7e6;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .blabel {
+            flex: 1;
+            font-weight: bold;
+            min-width: 150px;
+        }
+        .colon {
+            margin: 0 10px;
+        }
+        input {
+            flex: 2;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: block;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bio-data">
+    <h2>BIO - DATA</h2>
+
+    <div class="info">
+        <span class="blabel">1. Name</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="name">
+            <span id="namerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">2. Date of Birth</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="dob">
+            <span id="doberror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">3. e-mail ID</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="email">
+            <span id="emailerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">4. Community and Caste</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="community">
+            <span id="communityerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">5. Blood Group</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="bloodgroup">
+            <span id="bloodgrouperror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">6. Father/Guardian Address</span><span class="colon">:</span>
+        <div class="input-container">
+            <input type="text" id="guardian">
+            <span id="guardianerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">7. Occupation & Income</span><span class="colon">:</span>
+        <div class="input-container">
+            <input type="text" id="occupation">
+            <span id="occupationerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">8. Native Place & District</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="nativeplace">
+            <span id="nativeplaceerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="blabel">9. Local Guardian & Ph. No.</span><span class="colon">:</span> 
+        <div class="input-container">
+            <input type="text" id="localguardian">
+            <span id="localguardianerror" class="error"></span>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Exam</th>
+                <th>Name & Address of Institution</th>
+                <th>Max Marks</th>
+                <th>Marks Secured</th>
+                <th>% of Marks</th>
+                <th>Year of Passing</th>
+            </tr>
+            <tr>
+                <td>SSLC</td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+            </tr>
+            <tr>
+                <td>H.Sc</td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+            </tr>
+            <tr>
+                <td>UG Degree</td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+            </tr>
+            <tr>
+                <td>PG Degree</td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="info">
+        <span class="blabel">11. Mode of Admission</span><span class="colon">:</span>
+        <div class="radio-group">
+            <label><input type="radio" name="admission_mode" value="Counselling"> Counselling</label>
+            <label><input type="radio" name="admission_mode" value="Mgt"> Mgt</label>
+            <label><input type="radio" name="admission_mode" value="NRI"> NRI</label>
+            <label><input type="radio" name="admission_mode" value="Others"> Others</label>
+        </div>
+    </div>              
+</div>
+<div class="nav-links">
+    <button onclick="window.location.href='index.html'">Previous</button>
+    <button onclick="validateForm()">Next</button>
+</div>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+
+        let name = document.getElementById("name").value;
+        let dob = document.getElementById("dob").value;
+        let email = document.getElementById("email").value;
+        let community = document.getElementById("community").value;
+        let bloodgroup = document.getElementById("bloodgroup").value;
+        let guardian = document.getElementById("guardian").value;
+        let occupation = document.getElementById("occupation").value;
+        let nativeplace = document.getElementById("nativeplace").value;
+        let localguardian = document.getElementById("localguardian").value;
+
+        let nameError = document.getElementById("namerror");
+        let dobError = document.getElementById("doberror");
+        let emailError = document.getElementById("emailerror");
+        let communityError = document.getElementById("communityerror");
+        let bloodgroupError = document.getElementById("bloodgrouperror");
+        let guardianError = document.getElementById("guardianerror");
+        let occupationError = document.getElementById("occupationerror");
+        let nativeplaceError = document.getElementById("nativeplaceerror");
+        let localguardianError = document.getElementById("localguardianerror");
+
+        let dobPattern = /^\d{2}-\d{2}-\d{4}$/;
+
+
+        if (name === "") {
+            nameError.innerHTML = "Name is required.";
+            isValid = false;
+        }
+        if (!dob.match(dobPattern)) {
+            dobError.innerHTML = "Enter in DD-MM-YYYY format.";
+            isValid = false;
+        }
+        if (email==="") {
+            emailError.innerHTML = "Enter a valid email address.";
+            isValid = false;
+        }
+        if (community === "") {
+            communityError.innerHTML = "Community and Caste are required.";
+            isValid = false;
+        }
+        if (bloodgroup === "") {
+            bloodgroupError.innerHTML = "Blood Group is required.";
+            isValid = false;
+        }
+        if (guardian === "") {
+            guardianError.innerHTML = "Father/Guardian Address is required.";
+            isValid = false;
+        }
+        if (occupation === "") {
+            occupationError.innerHTML = "Occupation & Income are required.";
+            isValid = false;
+        }
+        if (nativeplace === "") {
+            nativeplaceError.innerHTML = "Native Place & District are required.";
+            isValid = false;
+        }
+        if (localguardian === "") {
+            localguardianError.innerHTML = "Local Guardian & Phone No. are required.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            window.location.href = "page3.html";
+        }
+    }
+</script>
+
+</body>
+</html>

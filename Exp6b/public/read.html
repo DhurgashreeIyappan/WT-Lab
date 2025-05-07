@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read User Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Enter Roll Number to Fetch Details</h2>
+        <input type="text" id="rollNo" placeholder="Enter Roll Number">
+        <button onclick="fetchUser()">Get Details</button>
+
+        <h3>User Details:</h3>
+        <div id="userDetails" class="details"></div>
+    </div>
+
+    <script>
+        async function fetchUser() {
+            const rollNo = document.getElementById("rollNo").value.trim();
+            if (!rollNo) {
+                alert("Please enter a roll number!");
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/user/${rollNo}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const user = data.user;
+                    document.getElementById("userDetails").innerHTML = `
+                        <p><strong>Personal Mail:</strong> ${user.personal_mail || "N/A"}</p>
+                        <p><strong>Temporary Address:</strong> ${user.temp_address || "N/A"}</p>
+                        <p><strong>Permanent Address:</strong> ${user.perm_address || "N/A"}</p>
+                        <p><strong>Mobile No:</strong> ${user.mobile_no || "N/A"}</p>
+                        <p><strong>WhatsApp No:</strong> ${user.whatsapp_no || "N/A"}</p>
+                        <p><strong>Parent Name:</strong> ${user.parent_name || "N/A"}</p>
+                        <p><strong>Parent Mobile:</strong> ${user.parent_mobile || "N/A"}</p>
+                        <p><strong>SSLC Mark:</strong> ${user.sslc_mark || "N/A"}</p>
+                        <p><strong>SSLC Board:</strong> ${user.sslc_board || "N/A"}</p>
+                        <p><strong>HSC Mark:</strong> ${user.hsc_mark || "N/A"}</p>
+                        <p><strong>HSC Board:</strong> ${user.hsc_board || "N/A"}</p>
+                        <p><strong>Diploma Mark:</strong> ${user.diploma_mark || "N/A"}</p>
+                        <p><strong>Semester 1 GPA:</strong> ${user.sem1_gpa || "N/A"}</p>
+                        <p><strong>Semester 1 CGPA:</strong> ${user.sem1_cgpa || "N/A"}</p>
+                        <p><strong>Semester 2 GPA:</strong> ${user.sem2_gpa || "N/A"}</p>
+                        <p><strong>Semester 2 CGPA:</strong> ${user.sem2_cgpa || "N/A"}</p>
+                        <p><strong>Semester 3 GPA:</strong> ${user.sem3_gpa || "N/A"}</p>
+                        <p><strong>Semester 3 CGPA:</strong> ${user.sem3_cgpa || "N/A"}</p>
+                        <p><strong>History of Arrears:</strong> ${user.history_arrears || "N/A"}</p>
+                        <p><strong>Standing Arrears:</strong> ${user.standing_arrears || "N/A"}</p>
+                        <p><strong>No. of Projects Done:</strong> ${user.projects_done || "N/A"}</p>
+                        <p><strong>GitHub Link:</strong> <a href="${user.github}" target="_blank">${user.github}</a></p>
+                        <p><strong>LeetCode ID:</strong> ${user.leetcode_id || "N/A"}</p>
+                        <p><strong>LeetCode Dashboard:</strong> <a href="${user.leetcode_dashboard}" target="_blank">${user.leetcode_dashboard}</a></p>
+                        <p><strong>LeetCode Problems Solved:</strong> ${user.leetcode_solved || "N/A"}</p>
+                        <p><strong>Other Platforms Solved:</strong> ${user.other_platforms_solved || "N/A"}</p>
+                        <p><strong>Certifications:</strong> ${user.certifications || "N/A"}</p>
+                        <p><strong>Internships:</strong> ${user.internships || "N/A"}</p>
+                        <p><strong>Languages:</strong> ${user.languages || "N/A"}</p>
+                    `;
+                } else {
+                    document.getElementById("userDetails").innerHTML = `<p class="error">${data.message}</p>`;
+                }
+            } catch (error) {
+                console.error("Error fetching user details:", error);
+                document.getElementById("userDetails").innerHTML = `<p class="error">Error fetching data.</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

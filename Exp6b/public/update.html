@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Update Details</h2>
+    <div class="container">
+        <label>Enter Roll No:</label>
+        <input type="text" id="roll_no_search" required>
+        <button onclick="fetchUser()">Search</button>
+
+        <form id="updateForm">
+            <label>Roll No:</label> 
+            <input type="text" name="roll_no" id="roll_no" required readonly>
+
+            <label>Name:</label> 
+            <input type="text" name="name" id="name" required>
+
+            <label>Email ID:</label> 
+            <input type="email" name="email" id="email" required>
+
+            <label>Mobile No:</label> 
+            <input type="text" name="mobile_no" id="mobile_no" required>
+
+            <label>History of Arrears:</label> 
+            <input type="text" name="history_arrears" id="history_arrears"><br>
+
+            <label>Standing Arrears:</label> 
+            <input type="text" name="standing_arrears" id="standing_arrears"><br>
+
+            <label>No. of Projects Done:</label> 
+            <input type="text" name="projects_done" id="projects_done"><br>
+
+
+            <label>GitHub Link:</label> <input type="url" name="github" id="github"><br>
+            <label>Leetcode ID:</label> <input type="text" name="leetcode_id" id="leetcode_id"><br>
+            <label>Leetcode Dashboard Link:</label> <input type="url" name="leetcode_dashboard" id="leetcode_dashboard"><br>
+            <label>No. of Problems Solved in Leetcode:</label> <input type="text" name="leetcode_solved" id="leetcode_solved"><br>
+            <label>No. of Problems Solved in Other Platforms:</label> <input type="text" name="other_platforms_solved" id="other_platforms_solved"><br>
+            <label>No. of Global Certifications Done:</label> <input type="text" name="certifications" id="certifications"><br>
+            <label>No. of Internships Done:</label> <input type="text" name="internships" id="internships"><br>
+            <label>Languages Known (other than English & Tamil):</label> <input type="text" name="languages" id="languages"><br>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <script>
+        async function fetchUser() {
+            const rollNo = document.getElementById("roll_no_search").value.trim();
+            if (!rollNo) {
+                alert("Enter Roll No");
+                return;
+            }
+
+            try {
+                let response = await fetch(`http://localhost:5000/user/${rollNo}`);
+                let data = await response.json();
+
+                if (data.success) {
+                    document.getElementById("updateForm").style.display = "block";
+                    document.getElementById("roll_no").value = data.user.roll_no;
+                    document.getElementById("name").value = data.user.name;
+                    document.getElementById("email").value = data.user.email;
+                    document.getElementById("mobile_no").value = data.user.mobile_no;
+                    document.getElementById("history_arrears").value = data.user.history_arrears || "";
+                    document.getElementById("standing_arrears").value = data.user.standing_arrears || "";
+                    document.getElementById("projects_done").value = data.user.projects_done || "";
+                    document.getElementById("github").value = data.user.github || "";
+                    document.getElementById("leetcode_id").value = data.user.leetcode_id || "";
+                    document.getElementById("leetcode_dashboard").value = data.user.leetcode_dashboard || "";
+                    document.getElementById("leetcode_solved").value = data.user.leetcode_solved || "";
+                    document.getElementById("other_platforms_solved").value = data.user.other_platforms_solved || "";
+                    document.getElementById("certifications").value = data.user.certifications || "";
+                    document.getElementById("internships").value = data.user.internships || "";
+                    document.getElementById("languages").value = data.user.languages || "";
+                } else {
+                    alert("User not found!");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        document.getElementById("updateForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            let userData = {};
+            formData.forEach((value, key) => userData[key] = value);
+
+            try {
+                let response = await fetch("http://localhost:5000/update", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(userData)
+                });
+
+                let result = await response.json();
+                alert(result.message);
+                if (result.success) window.location.href = "index.html";
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error updating details.");
+            }
+        });
+    </script>
+</body>
+</html>
